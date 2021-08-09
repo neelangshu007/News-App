@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="275dp"
+    android:background="#E8E4E4"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_margin="7dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="5dp"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/black"
+                android:text="Title"
+                android:textSize="20sp"
+                android:textStyle="bold">
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="6"
+                    android:padding="5dp"
+                    android:id="@+id/description"
+                    android:textSize="15sp"
+                    android:textColor="#868686"
+                    android:text="Description">
+
+                </TextView>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/imageView">
+
+                </ImageView>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Author"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                android:id="@+id/author"
+                android:textColor="#737373"
+                android:padding="5dp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/time"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:text="Time">
+            </TextView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
