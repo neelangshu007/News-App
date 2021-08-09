@@ -16,12 +16,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private static final int NEWS_LOADER_ID = 1;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    View loadingIndicator ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +71,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         mEmptyStateTextView = findViewById(R.id.empty_view);
         newsListView.setEmptyView(mEmptyStateTextView);
 
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        loadingIndicator = findViewById(R.id.loading_indicator);
 
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -75,11 +81,31 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
             loaderManager.initLoader(NEWS_LOADER_ID, null, this);
         }else{
-            View loadingIndicator = findViewById(R.id.loading_indicator);
-            loadingIndicator.setVisibility(View.GONE);
 
+            loadingIndicator.setVisibility(View.GONE);
             mEmptyStateTextView.setText("No Internet Connection");
         }
+
+        swipeRefreshLayout = findViewById(R.id.swipeLayout);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if(networkInfo != null && networkInfo.isConnected()){
+                    LoaderManager loaderManager = getLoaderManager();
+
+                    loaderManager.initLoader(NEWS_LOADER_ID, null, NewsActivity.this);
+
+                }else{
+                    loadingIndicator.setVisibility(View.GONE);
+
+                    mEmptyStateTextView.setText("No Internet Connection");
+
+                    Toast.makeText(NewsActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
