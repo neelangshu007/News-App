@@ -6,7 +6,7 @@ More info on the News data REST API available at:
 https://newsdata.io/
 
 ## Note:
-Get the newsdata.io API key before running the app
+Get the newsdata.io API key before running the app and add it in the REQUEST_NEWS_URL Variable under NewsActivity.java
 
 
 ## Pre-requisites
