@@ -1,6 +1,6 @@
 # News App
 This app displays a list of recent Top News in the world
-from the newsdata.io .
+from the newsdata.io website
 
 More info on the News data REST API available at:
 https://newsdata.io/
