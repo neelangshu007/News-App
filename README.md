@@ -2,6 +2,9 @@
 This app displays a list of recent Top News in the world
 from the newsdata.io .
 
+## Feature
+* Swipe Down to Refresh the Page and get new Top News
+
 More info on the News data REST API available at:
 https://newsdata.io/
 
