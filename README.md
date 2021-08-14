@@ -2,11 +2,12 @@
 This app displays a list of recent Top News in the world
 from the newsdata.io .
 
+More info on the News data REST API available at:
+https://newsdata.io/
+
 ## Feature
 * Swipe Down to Refresh the Page and get new Top News
 
-More info on the News data REST API available at:
-https://newsdata.io/
 
 ## Note:
 Get the newsdata.io API key before running the app and add it in the REQUEST_NEWS_URL Variable under NewsActivity.java
